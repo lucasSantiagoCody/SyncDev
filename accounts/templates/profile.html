@@ -1,0 +1,212 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+{% block 'importcss' %}
+    <link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+{% endblock %}  
+{% block 'title' %}Profile{% endblock %}
+
+{% block 'content' %}
+
+{% for message in messages %}
+<div class="container mt-3 text-center alert {{message.tags}} animate__animated animate__shakeX">
+    {{message}}
+</div>
+{% endfor %}
+
+<!--  Form Profile Picture-->
+<div id="div-profile-picture" class="mt-5">
+    <form method="POST" class="form" action="{% url 'save_profile_picture'  %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="input-file">
+            {% if profile.profile_picture %}
+                <img src="{{profile.profile_picture.url}}" id="profile-picture">
+            {% else %}
+                <i class="fas fa-image ml-2"  id="preview-default"></i>
+                <img id="image-preview">
+            {% endif %}
+        </label>
+        <input type="file" name="file" id="input-file">
+        <br>
+        <button type="submit" class="btn mt-2 animate__animated animate__pulse" id="btn-send-picture">Send</button>
+    </form>
+</div>
+<!-- MAIN -->
+<div id="main" class="container">
+    <!-- Profile Content -->
+    <div id="profile-content">
+        <div class="item">
+            <h2>Sobre si</h2>
+            <div class="input-group mb-2 mt-4">
+                <div class="input-group-prepend">
+                    <button class="input-group-text btn">Name</button>
+                </div>
+                <input class="form-control" value="{{profile.user.username}}" disabled>
+            </div>
+            {% if  profile_informations == 'found' %}
+                <input type="hidden" name="profile_informations" value="found">
+                <div class="input-group mb-2 mt-3">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn">Phone</button>
+                    </div>
+                    <input class="form-control" value="{{profile.phone}}" disabled>
+                </div>
+
+                <div class="input-group mb-2 mt-3">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn">Nif</button>
+                    </div>
+                    <input class="form-control" value="{{profile.nif}}" disabled>
+                </div>
+
+                <div class="input-group mb-2 mt-3">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn">Date born</button>
+                    </div>
+                    <input type="text" class="form-control" value="{{profile.date_of_birth}}" disabled>
+                </div>
+            {% endif %}
+            <div class="edit">
+                <button class="btn mt-2 btn-edit" onclick="hide('.alert', 'true'),show('#add-edit-info'), back_to_top(), show('#edit-info-about-yourself')">Edit</button>
+            </div>
+        </div>
+        
+        <div class="item mt-5 mb-5">    
+            <h2>Opçoes de inicio de sessão</h2>
+            <div class="input-group mb-2 mt-4">
+                <div class="input-group-prepend">
+                    <button class="input-group-text btn">E-mail</button>
+                </div>
+                <input class="form-control" value="{{profile.user.email}}" disabled>
+            </div>
+            <div class="input-group mb-2 mt-3">
+                <div class="input-group-prepend">
+                    <button class="input-group-text btn">Password</button>
+                </div>
+                <input class="form-control" placeholder="XXX-XXX-XXX" disabled>
+            </div>
+            <div class="edit">
+                <button class="btn btn-edit" onclick="hide('.alert', 'true'), show('#add-edit-info'), back_to_top(), show('#edit-info-login-options')">Edit</button>
+            </div>
+        </div>
+        <!-- IF NOT ADD INFORMATIONS -->
+        {% if profile_informations == 'not found' %}
+            <div id="div-for-btn-add-info">
+                <button class="btn" id="btn-add" onclick='hide(".alert", "true"), show("#add-edit-info"),show("#add-info"),back_to_top()'>Adicionar Informações</button>
+            </div>
+        {% endif %}
+    </div>
+    
+</div>
+
+<!-- DIV ADD and edit INFO -->
+<div id="add-edit-info">
+    <i class="fas fa-close" onclick="hide('#add-info'), hide('#edit-info-about-yourself'), hide('#edit-info-login-options'), hide('#add-edit-info')"></i>
+    
+    <!-- DIV ADD INFO -->
+    <div id="add-info">
+        <div class="justify-content-center">
+            <form class='form'method="POST" action="{% url 'add_info_profile'  %}">
+                {% csrf_token %}
+                <div class="justify-content-center">
+                    <i class="fas fa-info"></i>
+                    <h4>nformations</h4>
+                </div>
+                <br>
+                <div class="input-group mb-2 mt-3">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn" disabled>Phone</button>
+                    </div>
+                    <input class="form-control"  maxlength="9" minlength="9" name="phone" required>
+                </div>
+                <div class="input-group mb-2 mt-3">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn" disabled>Nif</button>
+                    </div>
+                    <input class="form-control" name="nif" maxlength="14" minlength="14" required>
+                </div>
+                <div class="input-group mb-2 mt-3">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn" disabled>Date born</button>
+                    </div>
+                    <input type="date" class="form-control" name="date_of_birth" required>
+                </div>
+                <div class="justify-content-center">
+                    <button type="submit"  class="btn mt-4">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- YOUR SELF -->
+    <div id="edit-info-about-yourself">
+        <div class="justify-content-center">
+            <form class='form'method="POST" action="{% url 'edit_profile'  %}">
+                {% csrf_token %}
+                <input type="hidden" name="form" value="yourself">
+
+                <div class="justify-content-center">
+                    <h4>Edit Profile</h4>
+                </div>
+                <br>
+                
+                <div class="input-group mb-2 mt-3">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn" disabled>Name</button>
+                    </div>
+                    <input class="form-control" name="name" value="{{profile.user.username}}" required>
+                </div>
+                {% if profile_informations == 'found' %}
+                        <input type="hidden" name="profile_informations" value="found">
+                    <div class="input-group mb-2 mt-3">
+                        <div class="input-group-prepend">
+                            <button class="input-group-text btn" disabled>Phone</button>
+                        </div>
+                        <input class="form-control" name="phone" value="{{profile.phone}}"  maxlength="9" minlength="9" required>
+                    </div>
+                    <div class="input-group mb-2 mt-3">
+                        <div class="input-group-prepend">
+                            <button class="input-group-text btn" disabled>Nif</button>
+                        </div>
+                        <input class="form-control" name="nif" value="{{profile.nif}}" maxlength="14" minlength="14" required>
+                    </div>
+                    <div class="input-group mb-2 mt-3">
+                        <div class="input-group-prepend">
+                            <button class="input-group-text btn" disabled>Date born</button>
+                        </div>
+                        <input class="form-control"  value="{{profile.date_of_birth}}" >
+                        <input type="date"  name="date_of_birth">
+                    </div>
+                {% endif %}
+                <div class="justify-content-center">
+                    <button type="submit"  class="btn mt-4">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- LOGIN OPTIONS -->
+    <div id="edit-info-login-options">
+        <div class="justify-content-center">
+            <form class='form' method="POST" action="{% url 'edit_profile' %}">
+                {% csrf_token %}
+                <input type="hidden" name="form" value="login_options">
+                
+                <div class="input-group mb-2 mt-3">
+                    <div class="input-group-prepend">
+                        <button class="input-group-text btn" disabled>Email</button>
+                    </div>
+                    <input class="form-control" name="email" value="{{profile.user.email}}" required>
+                </div>
+                <a href='{% url "password_change" %}' class="btn mt-2" id="btn-change-password">change password</a>
+                
+                <div class="justify-content-center">
+                    <button type="submit"  class="btn mt-4">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block 'importjs' %}
+    <script src="{% static 'accounts/js/profile.js' %}"></script>
+{% endblock %}

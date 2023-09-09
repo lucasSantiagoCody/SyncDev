@@ -1,0 +1,7 @@
+venv
+templates/static/bootstrap
+templates/static/fontawesome
+templates/static/animatecss
+media
+.vscode
+.env

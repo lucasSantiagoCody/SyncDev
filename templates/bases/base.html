@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block 'importcss' %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'bases/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'bases/css/colors.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'animatecss/animate.min.css' %}">
+    <title>{% block 'title' %}{% endblock %}</title>
+</head>
+<body>
+    {% block 'content' %}{% endblock %}
+    {% block 'importjs' %}{% endblock %}
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
+    <script src="{% static 'bases/js/base.js' %}"></script>
+</body>
+</html>

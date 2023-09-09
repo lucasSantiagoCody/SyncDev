@@ -1,0 +1,14 @@
+body{
+    background: rgb(13, 15, 16)!important;
+}
+
+.navbar{
+    background-color: #001d22!important;
+
+}
+
+.navbar .dropdown .dropdown-toggle{ background:rgb(13, 15, 16); border: none;}
+
+.dropdown-item{
+    font-weight: 700!important;
+}

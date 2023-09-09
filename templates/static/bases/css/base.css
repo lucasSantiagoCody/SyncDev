@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ 
+}
+body{
+    color: white!important;
+    font-family: 'Trebuchet MS', sans-serif!important;
+}
+body::-webkit-scrollbar{
+    width: 7px;
+    background: white;
+}
+body::-webkit-scrollbar-thumb{
+    background: var(--secondary-color);
+}
+
+a, .btn{box-shadow: none!important;}
+
+.justify-content-center{
+    display: flex;
+    justify-content: center;
+}

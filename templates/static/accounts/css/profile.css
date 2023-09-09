@@ -1,0 +1,215 @@
+body{
+
+    background-color: var(--secondary-dark)!important;
+}
+
+.alert{
+    font-weight: 700;
+}
+
+ /* PROFILE PICTURE */
+#div-profile-picture{ padding-left: 6%;  }
+#div-profile-picture label{cursor:pointer;}
+
+#div-profile-picture label img{
+    width: 100px; 
+    height: 100px;
+    border-radius: 4px;
+}
+#div-profile-picture label #image-preview{ display: none;}
+#div-profile-picture #btn-send-picture{
+    margin-left: -0.3%;
+    display: none; 
+}
+#div-profile-picture label #preview-default{
+    font-size: 70pt;
+    display: block;
+}
+
+#div-profile-picture .form input{display: none; }
+
+/*========================END=============================== */
+ 
+/* MAIN */
+#main{
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+/* PROFILE CONTENT */
+#profile-content{
+    position: absolute;
+    width: 90%;
+}
+#profile-content .item{
+    padding: 3% 3%;
+    border-radius: 8px;
+    border: 2px solid #012f37;
+}
+#profile-content .input-group-prepend button{
+    height: 55px;
+    box-shadow: none;
+    width: 110px;
+    font-size: 15pt;
+    background-color: var(--main-color);
+    color: white;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+    position: static;
+}
+#profile-content .input-group input{
+    box-shadow: none;
+    border: none; 
+    height: 55px;
+    width: 50px!important;
+    font-size: 15pt;    
+    transition: 1s all;
+}
+#profile-content .input-group input:focus{
+    background-color: #e2e1e1;
+}
+
+#div-profile-picture button[type='submit'], #profile-content .edit .btn-edit{
+        color: white;
+        font-size: 15pt;
+        border-radius: 90px;
+        height: 55px;
+        width: 110px;
+        transition: 1s;
+        background-color: var(--main-color);  
+    }
+
+#div-profile-picture button[type='submit']:hover, #profile-content .edit  .btn-edit:hover{
+    background-color: var(--secondary-color);    
+}
+.edit{height: 70px; padding-top: 1%; }
+.edit .btn-edit{float: right;}
+#div-for-btn-add-info{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#div-for-btn-add-info #btn-add{
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    transition: 1s;
+    padding: 1% 3%;
+    font-size: 13pt;
+    border-radius: 90px;
+}
+#div-for-btn-add-info #btn-add:hover{
+    background: var(--secondary-color);    
+    color: var(--main-color);
+}
+/*=========================END======================= */
+
+/* DIV ADD and EDIT INFO */
+
+#add-edit-info{
+    position: absolute!important;
+    background: rgb(214, 214, 214);
+    width: 100%;
+    height: 170vh;
+    margin-top: -205px;
+    padding-top: 2%;
+    display: none;
+    color: black;
+}
+.fa-close{
+    font-size: 20pt;
+    margin-left: 5%;
+    cursor: pointer;
+    transition: 1s all;
+}
+.fa-close:hover{
+    color: #036475;
+}
+#add-edit-info  .form{
+    margin-top: 10%;
+    height: 70vh;
+    width: 70%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 1rem #5e5c5ccc;
+    padding: 4%;
+    border-radius: 8px; 
+}
+#add-edit-info .form i{
+    font-size: 40pt;
+    margin-top: -3%;
+}
+
+#add-edit-info .input-group-prepend button{
+    font-size: 13pt;
+    margin-top: 2%;
+    background: #424242;
+    color: white;
+    width: 110px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+    
+#add-edit-info  .form input{
+    opacity: 1;
+    border-left: none;
+    margin-top: 0.3%;
+    box-shadow: none;
+    transition: 1s;
+    border: 1px solid #ccc;
+}
+#add-edit-info  .form input:hover{
+    background: #ccc;
+}
+#add-edit-info  .form button[type='submit']{
+    background:#f5f6f7;
+    color: white;
+    border-radius: 90px;
+    padding: 1% 5%;
+    border: 2px solid #ccc;
+    color: rgb(151, 148, 148);
+    font-size: 14pt;
+    transition: 5s all;
+}
+#add-edit-info  .form button[type='submit']:hover{
+    background:rgb(75, 72, 72);
+    border: 2px solid #ffffff;
+    color: white;
+}
+#add-edit-info  .form #div-for-btn-submit{
+    display: flex;
+    justify-content: center;
+}
+/* ALL CHILD DIVS */
+#edit-info-login-options, #add-edit-info #add-info, #edit-info-about-yourself, #edit-info-login-options{display: none; margin-top: -5%;}
+#edit-info-about-yourself input[type='date']{
+    padding-left: 2%;
+}
+#edit-info-login-options #btn-change-password{
+    background: var(--main-color);
+    color: white;
+    padding: 1%;
+    border-radius: 4px;
+}
+
+/* END */
+
+
+@media screen and (max-width: 800px){
+    #profile-content{margin-top: 30%!important;}
+    #image-profile-.form{margin-left: -60%;}
+    #add-edit-info {
+        height: 125vh;
+        padding-top: 25%;
+    }
+    #add-edit-info  .form i{
+        margin-top: -5%;
+    }
+    #add-edit-info  .form{
+        padding: 15% 4%;   
+    }
+   
+}

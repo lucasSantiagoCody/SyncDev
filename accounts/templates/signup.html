@@ -1,0 +1,75 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+{% block 'importcss' %}
+    <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
+{% endblock %}  
+{% block 'title' %}Sign Up{% endblock %}
+
+{% block 'content' %}
+<div id="main">
+    <aside>
+        <div class="mt-2">
+            <i class='fas fa-user mb-3'></i> 
+            <h1>SignUp</h1>
+            
+            <span>Caso já possua um conta <br/> clique no botão a baixo</span>
+            <br/>
+            <a href="{% url 'login' %}" class="btn btn-outline-info mt-3">login</a>
+        </div>
+    </aside>
+        <form method="POST" action="{% url 'signup' %}" id="signup-form">
+            {% csrf_token %}
+            <div class="form-row align-items-center">
+                {% for message in messages %}
+                    <div class="alert {{message.tags}} animate__animated animate__shakeX">
+                        {{message}}
+                    </div>
+                {% endfor %}
+                <div class="col-10">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-user"></i></div>
+                        </div>
+                        {{form.username}}
+                    </div>
+                </div>
+
+                <div class="col-10">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                        </div>
+                        {{form.email}}
+                    </div>
+                </div>
+
+                <div class="col-10 mb-1">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
+                        </div>
+                        {{form.password1}}
+                    </div>
+                </div>
+                <label>{{form.password2.label}}</label>
+               
+                <div class="col-10 mt-1">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                        </div>
+                        
+                        {{form.password2}}
+                    </div>
+                </div>
+                <button type="submit" class="btn mt-2" >Sign Up</button>
+            </div>
+        </form>
+    </div>
+    
+
+{% endblock %}
+{% block 'importjs' %}
+    <script src="{% static 'accounts/js/accounts.js' %}"></script>
+    <script src="{% static 'accounts/js/signup.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'bases/base.html' %}
+{% load static %}
+{% block 'importcss' %}
+    <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
+{% endblock %}  
+{% block 'title' %}Login{% endblock %}
+ 
+{% block 'content' %}
+<div id="main">
+    <aside>
+        <div class="mt-2">
+            <i class='fas fa-user mb-3'></i> 
+            <h1>Login</h1>
+            <span>Caso não possuas uma conta <br/> clique no botão a baixo</span>
+            <br/>
+            <a href="{% url 'signup' %}" class="btn btn-outline-info mt-2">Sign Up</a>
+        </div>
+    </aside>
+    <form method="POST" action="{% url 'login' %}"  id="login-form">
+        {% csrf_token %}
+        <div class="form-row align-items-center">
+            {% for message in messages %}
+                <div class="alert {{message.tags}} animate__animated animate__shakeX">
+                    {{message}}
+                </div>
+            {% endfor %}
+            <div class="col-10">
+                
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                    </div>
+                    {{form.email}}
+                </div>
+            </div>  
+            <div class="col-10 mb-3">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                    </div>
+                    {{form.password}}
+                </div>
+            </div>
+            <div id='show-and-hide-password-div' class='mt-2'>
+                <input type='checkbox' id='input-for-show-and-hide-password' onclick="show_and_hide_password('#id_password')">
+                <label for='input-for-show-and-hide-password' >show password</label>
+            </div>
+            
+            <br/>
+            <a href="{% url 'password_reset' %}" class="text-success ">Forgot Password?</a>
+            <br/>
+            <button type="submit" class="btn">Login</button>
+        </div>
+    </form>
+    
+</div>
+    
+{% endblock %}
+{% block 'importjs' %}
+    <script src="{% static 'accounts/js/accounts.js' %}"></script>
+    <script src="{% static 'accounts/js/login.js'%}"></script>
+{% endblock %}
+  

@@ -1,0 +1,148 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-image: url("../../images/accountsbackground.jpg");
+
+
+}
+
+
+#main{
+    border-radius: 2px;
+    margin-top: 3%;
+    width: 85%;
+    height: 89vh;
+    background: white;
+    color: rgb(0, 0, 0);
+}
+
+#main aside{
+    float: right;
+    width: 49%;
+    height: 100%;
+    text-align: center;
+    background: var(--main-color);
+    color: white;
+    padding-top: 15%;
+    padding-bottom: 5%;
+}
+
+
+#main aside a.btn{
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    transition: 1s;
+    padding: 2% 6%;
+    border-radius: 40px;
+    font-size: 13pt;
+}
+#main aside a.btn:hover{
+    background: var(--secondary-color);    
+    color: var(--main-color);
+}
+#main aside span{
+    text-align: center;
+
+}
+#main aside i{
+    font-size:40pt;
+}
+
+
+#main form{
+    float: left;
+    width: 50%;
+    padding-bottom: 10%;
+
+}
+
+#show-and-hide-password-div{width: 26vh;}
+#show-and-hide-password-div label{
+    cursor: pointer!important;
+    font-size: 15pt;
+    position: absolute;
+    margin-left: 1%;
+    margin-top: -0.5%;
+}
+#show-and-hide-password-div input[type='checkbox']{
+    cursor: pointer!important;
+    width: 20px;
+    height: 20px;
+}
+
+#main form button[type='submit']{
+    background-color: var(--main-color)!important;
+    color: #ffffff;
+    border: none;
+    transition: 1s;
+    margin-left: 28.5%;
+    font-size: 13pt;   
+    padding: 2.5% 10%;
+    border-radius: 40px;
+}
+#main form#signup-form{
+    margin-top: -0.5%;
+
+}
+#main form#signup-form label{
+    color: var(--main-color);
+}
+#main form#login-form {
+    margin-top: 5.1%;
+}
+
+
+
+#main form .form-row{
+    margin-left: 12%;
+    margin-top: 20%;
+}
+#main form .form-row .alert{
+    width: 82%;
+    padding: 2%;
+    margin-top: -15%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 13pt;
+}
+.input-group-text{
+    height: 50px;
+}
+#main form i{
+    font-size: 17pt;
+    border: none;
+    color: var(--secondary-color);
+
+}
+#main form input[type='text'],input[type='email']input[type='password']{
+    height: 50px;
+    color: var(--main-color);
+}
+#main form input[type='text'],input[type='email']input[type='password']{
+    box-shadow: none;
+    border-color: rgb(197, 194, 194);
+}
+
+
+@media screen and (max-width: 800px){
+    #main{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    #main aside{
+        height: 48%;
+        width: 100%;
+    }
+    #main form {
+        height:52%;
+        width: 100%;
+        padding-left: 5%;
+        margin-bottom: 10%;
+    }
+    
+
+}
