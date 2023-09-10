@@ -15,8 +15,12 @@
         </button>
 
         <div class="dropdown">
-            <button class="btn btn-dark dropdown-toggle" onclick="show('.dropdown-menu')"><i class="fas fa-user"></i></button>
-        
+            {% if profile.profile_picture %}
+                <img src="{{profile.profile_picture.url}}" id='profile_picture' onclick="show('.dropdown-menu')">
+            {% else %}
+                <button class="btn btn-dark dropdown-toggle" onclick="show('.dropdown-menu')"><i class="fas fa-user"></i></button>
+            {% endif %}
+
             <ul  class="dropdown-menu mt-1" onmouseleave="hide('.dropdown-menu')">
                 {% if user.is_authenticated %}
                     <li><a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user-secret"></i> Profile</a></li>
@@ -27,12 +31,22 @@
                 {% endif %}
             </ul>
        </div>
-
-
     </div>
 </nav>
 
+{% if messages %}
+    {% for message in messages %}
+       <div class='container bg-dark mt-5 alert animate__animated animate__bounceInDown'>
+            <p>{{message}}</p>
+            <hr>
+            <a href='{% url "login" %}' class='btn btn-outline-secondary'>Log In</a>        
+</div>
+    {% endfor %}
+{% endif%}
+
  
+
+
 {% endblock %}
 
 {% block 'importjs' %}

@@ -7,8 +7,25 @@ body{
 
 }
 
-.navbar .dropdown .dropdown-toggle{ background:rgb(13, 15, 16); border: none;}
+.navbar .dropdown .dropdown-toggle{
+    background:rgb(13, 15, 16);
+    border: none;
+    margin-left: -45%;
+}
 
 .dropdown-item{
     font-weight: 700!important;
 }
+
+.dropdown .dropdown-menu{
+    margin-left: -140px;
+}
+
+.dropdown img{
+    width: 60px;
+    height: 60px;
+    border-radius: 90px;
+    box-shadow: 2px 2px 22px var(--secondary-color);
+    cursor: pointer;
+}
+

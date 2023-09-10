@@ -9,6 +9,9 @@ from .verifications.years_old import verify_years_old
 from django.http import HttpResponse
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from .forms import CustomUserCreationForm, LoginForm
+from django.conf import settings
+from PIL import Image
+import os
 
 
 def signup(request):
@@ -38,7 +41,6 @@ def signup(request):
         else:
             messages.add_message(request, constants.ERROR, 'The two Password fields didn\'t match!')
             return redirect(reverse('signup'))
-
 
 
 def login(request):
@@ -147,6 +149,13 @@ def edit_profile(request):
 @login_required
 def save_profile_picture(request):
     profile = Profile.objects.get(user=request.user)
+    if profile.profile_picture:
+        try:
+            image = profile.profile_picture 
+            path = os.path.join(settings.MEDIA_ROOT, str(image))
+            os.remove(path)
+        except:
+            messages.add_message(request, constants.ERROR, 'Could not to remove the old image')
     if request.method == 'POST':
         profile_picture = request.FILES.get('file')
         try:
@@ -198,16 +207,6 @@ class ResetPasswordConfirmView(PasswordResetConfirmView):
     
 class ResetPasswordCompleteView(PasswordResetCompleteView):
     template_name='password_reset_complete.html'
-
-
-
-
-
-
-
-
-
-
 
         
 def logout(request):

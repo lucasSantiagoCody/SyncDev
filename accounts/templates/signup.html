@@ -17,14 +17,15 @@
             <a href="{% url 'login' %}" class="btn btn-outline-info mt-3">login</a>
         </div>
     </aside>
-        <form method="POST" action="{% url 'signup' %}" id="signup-form">
+    <form method="POST" action="{% url 'signup' %}" id="signup-form">
             {% csrf_token %}
             <div class="form-row align-items-center">
-                {% for message in messages %}
-                    <div class="alert {{message.tags}} animate__animated animate__shakeX">
+             {% for message in messages %}
+                    <div class=" text-center alert {{message.tags}} animate__animated animate__shakeX">
                         {{message}}
                     </div>
                 {% endfor %}
+              
                 <div class="col-10">
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
@@ -58,14 +59,20 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-lock"></i></div>
                         </div>
-                        
                         {{form.password2}}
                     </div>
                 </div>
+
+                <div id='show-and-hide-password-div' class='mt-4'>
+                    <input type='checkbox' id='input-for-show-and-hide-password' onclick="show_and_hide_password('#id_password1'),show_and_hide_password('#id_password2')">
+                    <label for='input-for-show-and-hide-password' >show passwords</label>
+                </div>
+
                 <button type="submit" class="btn mt-2" >Sign Up</button>
             </div>
-        </form>
-    </div>
+             
+    </form>
+</div>
     
 
 {% endblock %}

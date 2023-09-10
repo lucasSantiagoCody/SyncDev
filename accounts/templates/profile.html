@@ -6,7 +6,9 @@
 {% block 'title' %}Profile{% endblock %}
 
 {% block 'content' %}
-
+<div id='div-redirect-to-home'>
+    <a href='{% url "index" %}' class='btn btn-outline-dark btn-redirect-to-home'>Return to Home</a>
+</div>
 {% for message in messages %}
 <div class="container mt-3 text-center alert {{message.tags}} animate__animated animate__shakeX">
     {{message}}
@@ -131,7 +133,7 @@
                     <input type="date" class="form-control" name="date_of_birth" required>
                 </div>
                 <div class="justify-content-center">
-                    <button type="submit"  class="btn mt-4">Save</button>
+                    <button type="submit"  class="btn">Save</button>
                 </div>
             </form>
         </div>
@@ -178,7 +180,7 @@
                     </div>
                 {% endif %}
                 <div class="justify-content-center">
-                    <button type="submit"  class="btn mt-4">Save</button>
+                    <button type="submit"  class="btn">Save</button>
                 </div>
             </form>
         </div>
@@ -199,7 +201,7 @@
                 <a href='{% url "password_change" %}' class="btn mt-2" id="btn-change-password">change password</a>
                 
                 <div class="justify-content-center">
-                    <button type="submit"  class="btn mt-4">Save</button>
+                    <button type="submit"  class="btn">Save</button>
                 </div>
             </form>
         </div>

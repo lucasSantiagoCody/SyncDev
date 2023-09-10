@@ -3,6 +3,12 @@ body{
     background-color: var(--secondary-dark)!important;
 }
 
+#div-redirect-to-home{width: 95%;  margin-top: 4%;   }
+.btn-redirect-to-home{
+    width: 150px;
+    float: right;
+}
+
 .alert{
     font-weight: 700;
 }
@@ -98,7 +104,7 @@ body{
     color: var(--secondary-color);
     border: 1px solid var(--secondary-color);
     transition: 1s;
-    padding: 1% 3%;
+    padding: 17px 50px;
     font-size: 13pt;
     border-radius: 90px;
 }
@@ -112,14 +118,15 @@ body{
 
 #add-edit-info{
     position: absolute!important;
-    background: rgb(214, 214, 214);
+    background: var(--main-dark);
     width: 100%;
-    height: 170vh;
-    margin-top: -205px;
-    padding-top: 2%;
+    height: 200%;
+    margin-top: -300px;
+    padding-top: 12%;
     display: none;
-    color: black;
+    
 }
+#add-edit-info h4{}
 .fa-close{
     font-size: 20pt;
     margin-left: 5%;
@@ -130,11 +137,11 @@ body{
     color: #036475;
 }
 #add-edit-info  .form{
-    margin-top: 10%;
+    margin-top: 7%;
     height: 70vh;
     width: 70%;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 1rem #5e5c5ccc;
+    background-color: var(--secondary-dark);
+    box-shadow: 0 0 10rem var(--main-color);
     padding: 4%;
     border-radius: 8px; 
 }
@@ -146,11 +153,13 @@ body{
 #add-edit-info .input-group-prepend button{
     font-size: 13pt;
     margin-top: 2%;
-    background: #424242;
-    color: white;
+    background: var(--main-color);
     width: 110px;
+    padding: 12px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    color: white;
+
 }
     
 #add-edit-info  .form input{
@@ -159,26 +168,29 @@ body{
     margin-top: 0.3%;
     box-shadow: none;
     transition: 1s;
+    padding: 12px;
     border: 1px solid #ccc;
+    color: var(--main-dark);
+
 }
 #add-edit-info  .form input:hover{
     background: #ccc;
 }
 #add-edit-info  .form button[type='submit']{
-    background:#f5f6f7;
-    color: white;
-    border-radius: 90px;
-    padding: 1% 5%;
-    border: 2px solid #ccc;
-    color: rgb(151, 148, 148);
-    font-size: 14pt;
-    transition: 5s all;
+    background-color: var(--main-color)!important;
+    color: #ffffff;
+    border: none;
+    transition: 1s;
+    font-size: 13pt;   
+    border-radius: 40px;
+    margin-top: 5%;
+    padding: 15px  50px;
 }
-#add-edit-info  .form button[type='submit']:hover{
-    background:rgb(75, 72, 72);
-    border: 2px solid #ffffff;
-    color: white;
+#add-edit-info .form button[type='submit']:hover{
+        box-shadow: 3px 2px 40px var(--main-color)!important;
+
 }
+
 #add-edit-info  .form #div-for-btn-submit{
     display: flex;
     justify-content: center;
@@ -191,25 +203,25 @@ body{
 #edit-info-login-options #btn-change-password{
     background: var(--main-color);
     color: white;
+    width: 100%;
     padding: 1%;
-    border-radius: 4px;
+    border-radius: 80px;
 }
 
 /* END */
 
 
 @media screen and (max-width: 800px){
-    #profile-content{margin-top: 30%!important;}
-    #image-profile-.form{margin-left: -60%;}
+    #profile-content{margin-top: 20%!important; padding-bottom: 10%;}
     #add-edit-info {
-        height: 125vh;
-        padding-top: 25%;
+        padding-top: 30%;
     }
     #add-edit-info  .form i{
         margin-top: -5%;
     }
-    #add-edit-info  .form{
-        padding: 15% 4%;   
+    #add-edit-info .form{
+        padding-top: 10%;
+        width: 95%;
     }
-   
+
 }

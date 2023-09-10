@@ -61,10 +61,10 @@ body{
 #show-and-hide-password-div{width: 26vh;}
 #show-and-hide-password-div label{
     cursor: pointer!important;
-    font-size: 15pt;
+    font-size: 13pt;
     position: absolute;
     margin-left: 1%;
-    margin-top: -0.5%;
+    margin-top: -0.1%;
 }
 #show-and-hide-password-div input[type='checkbox']{
     cursor: pointer!important;
@@ -83,14 +83,14 @@ body{
     border-radius: 40px;
 }
 #main form#signup-form{
-    margin-top: -0.5%;
+    margin-top: -5%;
 
 }
 #main form#signup-form label{
     color: var(--main-color);
 }
 #main form#login-form {
-    margin-top: 5.1%;
+    margin-top: 4.5%;
 }
 
 
@@ -102,7 +102,6 @@ body{
 #main form .form-row .alert{
     width: 82%;
     padding: 2%;
-    margin-top: -15%;
     text-align: center;
     font-weight: 700;
     font-size: 13pt;
