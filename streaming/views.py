@@ -8,3 +8,6 @@ def index(request):
         if request.user.id != None:
             context['profile'] = Profile.objects.get(user=request.user)
         return render(request, 'index.html', context )
+
+def handler404(request, exception):
+    return render(request, 'page404.html')
