@@ -18,7 +18,8 @@
             {% if profile.profile_picture %}
                 <img src="{{profile.profile_picture.url}}" id='profile_picture' onclick="show('.dropdown-menu')">
             {% else %}
-                <button class="btn btn-dark dropdown-toggle" onclick="show('.dropdown-menu')"><i class="fas fa-user"></i></button>
+                <button class="btn btn-dark dropdown-toggle" onclick="show('.dropdown-menu')"><i class="fa fa-user" aria-hidden="true"></i>
+                </button>
             {% endif %}
 
             <ul  class="dropdown-menu mt-1" onmouseleave="hide('.dropdown-menu')">
