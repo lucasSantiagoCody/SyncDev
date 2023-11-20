@@ -1,9 +1,18 @@
-*{
+
+:root{
+    --main-color: #1b465d;
+    --secondary-color: #4c809a;
+    --main-dark: #0d1117;
+    --secondary-dark: #001d22;
+}
+
+*{  
     margin: 0;
     padding: 0;
     box-sizing: border-box;
  
 }
+
 body{
     color: white!important;
     font-family: 'Trebuchet MS', sans-serif!important;

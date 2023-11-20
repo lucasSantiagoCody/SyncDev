@@ -50,6 +50,9 @@ body{
     font-size:40pt;
 }
 
+#main #signup-form #div_email_status{
+    display: none;
+}
 
 #main form{
     float: left;
@@ -73,7 +76,7 @@ body{
 }
 
 #main form button[type='submit']{
-    background-color: var(--main-color)!important;
+    background-color: var(--main-color);
     color: #ffffff;
     border: none;
     transition: 1s;
@@ -82,6 +85,15 @@ body{
     padding: 2.5% 10%;
     border-radius: 40px;
 }
+
+#main form button[type='submit']:hover{
+    background: var(--secondary-color)!important;    
+    color: var(--main-color);
+}
+
+
+
+
 #main form#signup-form{
     margin-top: -5%;
 

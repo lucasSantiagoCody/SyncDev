@@ -5,14 +5,15 @@ from django.contrib import messages
 from django.contrib.messages import constants
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
-from .verifications.years_old import verify_years_old
-from django.http import HttpResponse
+from .utils import verify_years_old
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.views import LoginView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from .forms import CustomUserCreationForm, LoginForm
 from django.conf import settings
 from PIL import Image
 import os
-
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 def signup(request):
     if request.method == 'GET':
@@ -23,7 +24,13 @@ def signup(request):
         email = request.POST.get('email')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-
+        context =  {
+            'username': username,
+            'email':  email,
+            'password1': password1,
+            'password2': password2
+        }
+        context_serializer = context.json()
         if password1 == password2:
             try:
                 user = CustomUser.objects.create_user(username=username, email=email, password=password1)
@@ -34,13 +41,13 @@ def signup(request):
                 verify_user = CustomUser.objects.filter(email__exact=email)
                 
                 if verify_user:
-                    messages.add_message(request, constants.WARNING, 'Use another E-mail!')
+                    messages.add_message(request, constants.WARNING, '')
+                    return JsonResponse({'status':"Use another E-mail!", 'context': context_serializer})
                 elif not verify_user:
-                    messages.add_message(request, constants.ERROR, 'Could Not Create  Acccount!')
-                return redirect(reverse('signup'))
+                    return JsonResponse({'status':"Could Not Create  Acccount!", 'context': context_serializer})
         else:
-            messages.add_message(request, constants.ERROR, 'The two Password fields didn\'t match!')
-            return redirect(reverse('signup'))
+            return JsonResponse({'status':"The two Password fields didn't match!",
+                                 'context':context_serializer})
 
 
 def login(request):
@@ -63,7 +70,6 @@ def login(request):
                 messages.add_message(request, constants.ERROR, 'User Not Found!')
             return redirect(reverse('login'))
 
-
 @login_required
 def profile(request):
     profile = Profile.objects.get(user=request.user)
@@ -74,7 +80,8 @@ def profile(request):
         else:
             profile_informations  = 'not found'
         return render(request, 'profile.html', {'profile': profile, 'profile_informations': profile_informations})
-    
+
+
 @login_required 
 def add_info_profile(request):
     profile = Profile.objects.get(user=request.user)
@@ -166,6 +173,7 @@ def save_profile_picture(request):
             messages.add_message(request, constants.ERROR, 'Unable To Save Profile Picture!')
     
     return redirect(reverse('profile'))
+
 
 @login_required
 def password_change(request):

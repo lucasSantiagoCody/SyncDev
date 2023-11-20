@@ -8,11 +8,11 @@
 {% block 'content' %}
 <div id="main">
     <aside>
-        <div class="mt-2">
+        <div class="mt-2"> 
             <i class='fas fa-user mb-3'></i> 
             <h1>SignUp</h1>
             
-            <span>Caso já possua um conta <br/> clique no botão a baixo</span>
+            <span>Caso já possuis uma conta <br/> clique no botão a baixo</span>
             <br/>
             <a href="{% url 'login' %}" class="btn btn-outline-info mt-3">login</a>
         </div>
@@ -20,11 +20,16 @@
     <form method="POST" action="{% url 'signup' %}" id="signup-form">
             {% csrf_token %}
             <div class="form-row align-items-center">
-             {% for message in messages %}
-                    <div class=" text-center alert {{message.tags}} animate__animated animate__shakeX">
-                        {{message}}
-                    </div>
-                {% endfor %}
+                <div id="div_email_status" class="alert alert-warning"></div>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class=" text-center alert {{message.tags}} animate__animated animate__shakeX">
+                            {{message}}
+                            
+                        </div>
+                    {% endfor %}
+                {% endif %}
               
                 <div class="col-10">
                     <div class="input-group mb-2">
@@ -47,7 +52,7 @@
                 <div class="col-10 mb-1">
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-unlock-alt"></i></div>
+                            <div class="input-group-text"><i class="fas fa-lock"></i></div>
                         </div>
                         {{form.password1}}
                     </div>
@@ -68,7 +73,7 @@
                     <label for='input-for-show-and-hide-password' >show passwords</label>
                 </div>
 
-                <button type="submit" class="btn mt-2" >Sign Up</button>
+                <button  type="submit"  class="btn mt-2" >Sign Up</button>
             </div>
              
     </form>
